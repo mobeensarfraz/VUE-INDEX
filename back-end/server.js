@@ -1,6 +1,7 @@
 import   express from 'express';
 import mongoose from 'mongoose';
 import item from './router/item.js';
+import cors from "cors";
 
 
 // Connect to MongoDB
@@ -17,9 +18,10 @@ mongoose.connect('mongodb+srv://mobeensarfrazahmad:YMeLluYFJYhA7RH9@cluster0.yku
 
 const app= express();
 //body prases middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
-app.use('/api/item',item);
+app.use('/api/items',item);
 
 app.listen(port, () => console.log(`server running on port ${port}`));
